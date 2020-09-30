@@ -1,6 +1,6 @@
 // questions from https://codepen.io/boopalan002/pen/yKZVGa
 
-var questions = [{
+const questions = [{
     question: "1. How do you write 'Hello World' in an alert box?",
     choices: ["msg('Hello World')", "msgBox('Hello World');", "alertBox('Hello World');", "alert('Hello World');"],
     correctAnswer: 3
@@ -42,13 +42,22 @@ var questions = [{
     correctAnswer: 0
 }];
 
-// counter for what question you are on:
-var currentQuestion = 0;
-// counter for how many answers were right
-var correctAnswers = 0;
-// boolean for when to exit the quiz
-var quizOver = 0;
+var timer = 60;
+var score = 0;
+var totalScore = 0;
+var isWrong = false;
 
+// current index of myQuestions
+var i = 0;
+
+// buttons
+var startBtn = document.getElementById('startButton')
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
+
+startBtn.addEventListener('click', buildQuiz)
+
+function buildQuiz(){
+    console.log('startBtn:', startBtn)
+}
