@@ -42,22 +42,49 @@ const questions = [{
     correctAnswer: 0
 }];
 
-var timer = 60;
+var timer= 75;
 var score = 0;
 var totalScore = 0;
 var isWrong = false;
+var gameOver = false;
 
 // current index of myQuestions
 var i = 0;
 
 // buttons
-var startBtn = document.getElementById('startButton')
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
+var startBtn = document.getElementById('startButton');
+var submitButton = document.getElementById('submit');
+var countdownEl = document.getElementById('timer');
+
+
+
 
 startBtn.addEventListener('click', buildQuiz)
 
 function buildQuiz(){
     console.log('startBtn:', startBtn)
+    updateTimer();
+}
+
+
+// timer section
+
+
+// set interval of timer by 1 second
+function updateTimer () {
+    countdownEl.classList.remove('hide');
+    var timerCountdown = setInterval(function(){
+    console.log('timerCountdown:', timerCountdown)
+        if(isWrong){
+            timer = timer - 10
+            isWrong = false;
+        }
+    timer--;
+    countdownEl.textContent = timer;
+        if (timer === 0) {
+            gameOver = True;
+            clearInterval(timerCountdown)
+        }
+    },1000);
+  
 }
