@@ -20,16 +20,14 @@
     <div class="quizContainer container-fluid well well-lg text-center">
         <br>
         <!-- Visible before button is pressed-->
-        <div id="quizTitle" class="">
+        <div id="quizTitle" class="bg-light">
             <h1>Coding Quiz Challenge!</h1>
+            <div class="buttonPrompt">
+                <p>Press the below button when you are ready to start the timed quiz!</p>
+                <button id="startButton" type="button" class="btn btn-primary text-center">Start!</button>
+            </div>
         </div>
-        <br>
-        <div class=""> </div>
-        <div class="buttonPrompt">
-            <p>Press the below button when you are ready to start your timed quiz!</p>
-        </div>
-        <button id="startButton" type="button" class="btn btn-primary text-center">Primary</button>
-                
+
         <!-- the following will be used during the quiz itself -->
         <div class="question"></div>
         <ul class="choiceList"></ul>

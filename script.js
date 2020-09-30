@@ -55,6 +55,7 @@ var i = 0;
 var startBtn = document.getElementById('startButton');
 var submitButton = document.getElementById('submit');
 var countdownEl = document.getElementById('timer');
+var quizTitleEl = document.getElementById('quizTitle')
 
 
 
@@ -62,8 +63,11 @@ var countdownEl = document.getElementById('timer');
 startBtn.addEventListener('click', buildQuiz)
 
 function buildQuiz(){
-    console.log('startBtn:', startBtn)
+    console.log('startBtn:', startBtn);
+    // hide the quiz challenege and start button
+    quizTitleEl.classList.add('hide');
     updateTimer();
+    
 }
 
 
@@ -80,10 +84,12 @@ function updateTimer () {
             isWrong = false;
         }
     timer--;
-    countdownEl.textContent = timer;
-        if (timer === 0) {
-            gameOver = True;
+    countdownEl.textContent = "seconds left: " + timer;
+        if (timer === 0 && gameOver === false) {
+            gameOver = true;
+            timer = 0;
             clearInterval(timerCountdown)
+
         }
     },1000);
   
