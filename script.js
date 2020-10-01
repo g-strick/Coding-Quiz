@@ -54,9 +54,9 @@ var i = 0;
 // buttons
 var startBtn = document.getElementById('startButton');
 var submitButton = document.getElementById('submit');
+
 var countdownEl = document.getElementById('timer');
 var quizTitleEl = document.getElementById('quizTitle')
-
 
 
 
@@ -65,9 +65,10 @@ startBtn.addEventListener('click', buildQuiz)
 function buildQuiz(){
     console.log('startBtn:', startBtn);
     // hide the quiz challenege and start button
-    quizTitleEl.classList.add('hide');
+    quizTitleEl.style.display = 'none';
+
     updateTimer();
-    
+
 }
 
 
@@ -94,3 +95,43 @@ function updateTimer () {
     },1000);
   
 }
+
+//Resets page, and displays next question and answers
+function setQuestion(){
+    resetForm();
+    showQuestion();
+}
+
+//Resets everything back to default state when it's called
+function resetForm(){
+    while(answerBtnEl.firstChild){
+        answerBtnEl.removeChild(answerBtnEl.firstChild);
+    }
+}
+
+// generates current question and answers 
+function showQuestion(){
+    
+    //Current place in the array
+    q = Questions[i];
+    questionEl.innerText = q.question;
+
+    //Display each answer to the current question
+    q.answers.forEach(answer =>{
+        var button = document.createElement('button');
+        button.innerText = answer.answerTxt;
+        button.classList.add('btn');
+
+        //If the answer is correct, adds data attribute to the button element indicating that
+        if(answer.correct){
+            button.dataset.correct = answer.correct;
+            // console.log("Score is currently: ", score);
+        }
+
+        //Listening for the answer click
+        button.addEventListener('click', chooseAnswer);
+        answerBtnEl.appendChild(button);
+    })
+
+}
+
