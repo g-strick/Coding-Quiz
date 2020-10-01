@@ -56,8 +56,10 @@ var startBtn = document.getElementById('startButton');
 var submitButton = document.getElementById('submit');
 
 var countdownEl = document.getElementById('timer');
-var quizTitleEl = document.getElementById('quizTitle')
-
+var quizTitleEl = document.getElementById('quizTitle');
+var questionEl = document.getElementById('questions')
+var answerBtnsEl = document.getElementById('answerBtns');
+var questionCardEl = document.getElementById('questionCard')
 
 
 startBtn.addEventListener('click', buildQuiz)
@@ -68,6 +70,7 @@ function buildQuiz(){
     quizTitleEl.style.display = 'none';
 
     updateTimer();
+    showQuestion();
 
 }
 
@@ -111,26 +114,17 @@ function resetForm(){
 
 // generates current question and answers 
 function showQuestion(){
-    
+    questionCardEl.classList.remove("hide");
     //Current place in the array
-    q = Questions[i];
+    q = questions[i];
     questionEl.innerText = q.question;
 
     //Display each answer to the current question
-    q.answers.forEach(answer =>{
+    q.choices.forEach(choices =>{
         var button = document.createElement('button');
-        button.innerText = answer.answerTxt;
-        button.classList.add('btn');
-
-        //If the answer is correct, adds data attribute to the button element indicating that
-        if(answer.correct){
-            button.dataset.correct = answer.correct;
-            // console.log("Score is currently: ", score);
-        }
-
-        //Listening for the answer click
-        button.addEventListener('click', chooseAnswer);
-        answerBtnEl.appendChild(button);
+        button.innerText = q.choices;
+        console.log('showQuestion is working');
+        
     })
 
 }
