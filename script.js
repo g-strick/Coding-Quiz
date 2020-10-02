@@ -122,8 +122,9 @@ function showQuestion(){
     //Display each answer to the current question
     q.choices.forEach(choices =>{
         var button = document.createElement('button');
+        console.log('button:', button)
         button.innerText = q.choices;
-        console.log('showQuestion is working');
+        console.log('showAnswer is working');
         
     })
 
