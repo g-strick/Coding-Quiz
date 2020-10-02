@@ -125,7 +125,7 @@ function showQuestion(){
         console.log('button:', button)
         button.innerText = q.choices;
         console.log('showAnswer is working');
-        
+        questionEl.appendChild(button)
     })
 
 }
