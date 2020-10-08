@@ -120,12 +120,15 @@ function showQuestion(){
     questionEl.innerText = q.question;
 
     //Display each answer to the current question
+    var j= 0
     q.choices.forEach(choices =>{
+        
         var button = document.createElement('button');
         console.log('button:', button)
-        button.innerText = q.choices;
+        button.innerText = q.choices[j];
         console.log('showAnswer is working');
         questionEl.appendChild(button)
+        j++;
     })
 
 }
